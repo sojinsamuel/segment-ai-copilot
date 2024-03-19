@@ -6,6 +6,7 @@ import { getStringFromBuffer } from '@/lib/utils'
 import { z } from 'zod'
 import { AuthResult } from '@/lib/types'
 
+
 export async function signup(
   _prevState: AuthResult | undefined,
   formData: FormData
@@ -48,6 +49,8 @@ export async function signup(
         password,
         redirect: false
       })
+
+      // you can collect your userId and send identify + account creation calls to Segment here
 
       return { type: 'success', message: 'Account created!' }
     } catch (error) {

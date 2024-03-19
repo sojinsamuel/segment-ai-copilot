@@ -3,7 +3,7 @@
 import * as React from 'react'
 import Textarea from 'react-textarea-autosize'
 import { Analytics } from '@segment/analytics-node'
-const analytics = new Analytics({ writeKey: KEY GOES HERE})
+const analytics = new Analytics({ writeKey: process.env.NEXT_PUBLIC_SEGMENT_WRITE_KEY })
 
 import { useActions, useUIState } from 'ai/rsc'
 
@@ -56,9 +56,10 @@ export function PromptForm({
         // value is the user input, so sending to a.js
         analytics.track({
           userId: "123",
-          event: "User Message",
+          event: "Message Sent",
           properties:{
-            content:value
+            content:value,
+            conversationId: window.localStorage.getItem('newChatId')
           }
         })
 

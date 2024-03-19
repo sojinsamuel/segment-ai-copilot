@@ -5,6 +5,8 @@ import { AuthResult } from '@/lib/types'
 import { AuthError } from 'next-auth'
 import { z } from 'zod'
 
+
+
 export async function authenticate(
   _prevState: AuthResult | undefined,
   formData: FormData
@@ -29,6 +31,10 @@ export async function authenticate(
         password,
         redirectTo: '/'
       })
+      
+      // you can collect your userId and send identify + login calls to Segment here
+
+      
     } else {
       return { type: 'error', message: 'Invalid credentials!' }
     }

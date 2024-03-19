@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect, useRef } from 'react';
 import { IconOpenAI, IconUser } from '@/components/ui/icons'
 import { cn } from '@/lib/utils'
 import { spinner } from './spinner'
@@ -32,7 +33,7 @@ export function BotMessage({
   content: string | StreamableValue<string>
   className?: string
 }) {
-  const text = useStreamableText(content)
+  const text = useStreamableText(content);
 
   return (
     <div className={cn('group relative flex items-start md:-ml-12', className)}>
@@ -64,6 +65,7 @@ export function BotMessage({
                 return (
                   <code className={className} {...props}>
                     {children}
+                    
                   </code>
                 )
               }

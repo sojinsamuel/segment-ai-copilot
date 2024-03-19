@@ -28,24 +28,14 @@ export function ChatPanel({ id, title, input, setInput }: ChatPanelProps) {
   const exampleMessages = [
     {
       heading: 'Explain the concept',
-      subheading: 'of a serverless function',
-      message: `Explain the concept of a serverless function`
+      subheading: 'of portfolio diversification',
+      message: `Explain the concept of a portfolio diversification`
     },
     {
       heading: 'What are the benefits',
-      subheading: 'of using turborepo in my codebase?',
-      message: 'What are the benefits of using turborepo in my codebase?'
+      subheading: 'of buying bonds and stocks',
+      message: 'What are the benefits of buying bonds and stocks?'
     },
-    {
-      heading: 'List differences between',
-      subheading: 'pages and app router in Next.js',
-      message: `List differences between pages and app router in Next.js`
-    },
-    {
-      heading: 'What is the price',
-      subheading: `of VRCL in the stock market?`,
-      message: `What is the price of VRCL in the stock market?`
-    }
   ]
 
   return (

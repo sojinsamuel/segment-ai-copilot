@@ -12,6 +12,9 @@ import { Session } from '@/lib/types'
 import { usePathname, useRouter } from 'next/navigation'
 import { Message } from '@/lib/chat/actions'
 import { toast } from 'sonner'
+import { Analytics } from '@segment/analytics-node'
+
+const analytics = new Analytics({ writeKey: process.env.NEXT_PUBLIC_SEGMENT_WRITE_KEY })
 
 export interface ChatProps extends React.ComponentProps<'div'> {
   initialMessages?: Message[]
@@ -20,6 +23,7 @@ export interface ChatProps extends React.ComponentProps<'div'> {
   missingKeys: string[]
 }
 
+// changed hooks to only fire on load
 export function Chat({ id, className, session, missingKeys }: ChatProps) {
   const router = useRouter()
   const path = usePathname()
@@ -31,29 +35,34 @@ export function Chat({ id, className, session, missingKeys }: ChatProps) {
   const [_, setNewChatId] = useLocalStorage('newChatId', id)
 
   useEffect(() => {
-    if (session?.user) {
-      if (!path.includes('chat') && messages.length === 1) {
-        window.history.replaceState({}, '', `/chat/${id}`)
-      }
+    if (session?.user && !path.includes('chat') && messages.length === 1) {
+      window.history.replaceState({}, '', `/chat/${id}`);
     }
-  }, [id, path, session?.user, messages])
 
-  useEffect(() => {
-    const messagesLength = aiState.messages?.length
+    const messagesLength = aiState.messages?.length;
     if (messagesLength === 2) {
-      router.refresh()
+      router.refresh();
     }
-  }, [aiState.messages, router])
 
-  useEffect(() => {
-    setNewChatId(id)
-  })
+    setNewChatId(id);
 
+    missingKeys.forEach(key => {
+      toast.error(`Missing ${key} environment variable!`);
+    });
+  }, [id, path, session?.user, aiState.messages, router, setNewChatId, missingKeys]);
+
+  // send conversation start to segment if msg queue is empty
   useEffect(() => {
-    missingKeys.map(key => {
-      toast.error(`Missing ${key} environment variable!`)
-    })
-  }, [missingKeys])
+    if (messages.length === 0) {
+      analytics.track({
+        userId: "123",
+        event: "Conversation Started",
+        properties: {
+          conversationId: id
+        }
+      });
+    }
+  }, []);
 
   return (
     <>
