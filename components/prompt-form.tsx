@@ -2,6 +2,8 @@
 
 import * as React from 'react'
 import Textarea from 'react-textarea-autosize'
+import { Analytics } from '@segment/analytics-node'
+const analytics = new Analytics({ writeKey: KEY GOES HERE})
 
 import { useActions, useUIState } from 'ai/rsc'
 
@@ -42,7 +44,6 @@ export function PromptForm({
       ref={formRef}
       onSubmit={async (e: any) => {
         e.preventDefault()
-        console.log(e.target)
         // Blur focus on mobile
         if (window.innerWidth < 600) {
           e.target['message']?.blur()
@@ -51,7 +52,17 @@ export function PromptForm({
         const value = input.trim()
         setInput('')
         if (!value) return
+        
+        // value is the user input, so sending to a.js
+        analytics.track({
+          userId: "123",
+          event: "User Message",
+          properties:{
+            content:value
+          }
+        })
 
+        
         // Optimistically add user message UI
         setMessages(currentMessages => [
           ...currentMessages,
