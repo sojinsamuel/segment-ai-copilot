@@ -37,8 +37,9 @@ import { Chat } from '@/lib/types'
 import { auth } from '@/auth'
 import { Analytics } from '@segment/analytics-node'
 
-const analytics = new Analytics({ writeKey: process.env.NEXT_PUBLIC_SEGMENT_WRITE_KEY })
-
+const analytics = new Analytics({
+  writeKey: process.env.NEXT_PUBLIC_SEGMENT_WRITE_KEY
+})
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY || ''
@@ -82,16 +83,16 @@ async function confirmPurchase(symbol: string, price: number, amount: number) {
         </p>
       </div>
     )
-      // send purchase event to Segment
-      analytics.track({
-        userId: "123",
-        event: "Stock Purchased",
-        properties: {
-          stock_symbol: symbol,
-          amount: amount,
-          total: amount*price
-        }
-      });
+    // send purchase event to Segment
+    analytics.track({
+      userId: '123',
+      event: 'Stock Purchased',
+      properties: {
+        stock_symbol: symbol,
+        amount: amount,
+        total: amount * price
+      }
+    })
 
     systemMessage.done(
       <SystemMessage>
@@ -191,6 +192,15 @@ Besides that, you can also chat with users and do some calculations if needed.`
       }
 
       if (done) {
+        analytics.track({
+          userId: '123',
+          event: 'Message Received - Server',
+          properties: {
+            content,
+            conversationId: aiState.get().chatId
+          }
+        })
+
         textStream.done()
         aiState.done({
           ...aiState.get(),
@@ -268,15 +278,15 @@ Besides that, you can also chat with users and do some calculations if needed.`
               <StockSkeleton />
             </BotCard>
           )
-        // send custom component load to Segment
-        analytics.track({
-          userId: "123",
-          event: "Custom Component Loaded",
-          properties: {
-            type: 'Stock Price Chart',
-            stock_symbol: symbol
-          }
-        });
+          // send custom component load to Segment
+          analytics.track({
+            userId: '123',
+            event: 'Custom Component Loaded',
+            properties: {
+              type: 'Stock Price Chart',
+              stock_symbol: symbol
+            }
+          })
           await sleep(1000)
 
           aiState.done({
@@ -316,16 +326,15 @@ Besides that, you can also chat with users and do some calculations if needed.`
             )
         }),
         render: async function* ({ symbol, price, numberOfShares = 100 }) {
-
-        // send custom component load to Segment
-        analytics.track({
-          userId: "123",
-          event: "Custom Component Loaded",
-          properties: {
-            type: 'Stock Purchase Interface',
-            stock_symbol: symbol
-          }
-        });
+          // send custom component load to Segment
+          analytics.track({
+            userId: '123',
+            event: 'Custom Component Loaded',
+            properties: {
+              type: 'Stock Purchase Interface',
+              stock_symbol: symbol
+            }
+          })
 
           if (numberOfShares <= 0 || numberOfShares > 1000) {
             aiState.done({
@@ -358,7 +367,6 @@ Besides that, you can also chat with users and do some calculations if needed.`
                 })
               }
             ]
-            
           })
 
           return (
@@ -537,7 +545,10 @@ export const getUIStateFromAIState = (aiState: Chat) => {
         ) : message.role === 'user' ? (
           <UserMessage>{message.content}</UserMessage>
         ) : (
-          <BotMessage content={message.content} />
+          <BotMessage
+            content={message.content}
+            key={`${aiState.chatId}-${index}`}
+          />
         )
     }))
 }
