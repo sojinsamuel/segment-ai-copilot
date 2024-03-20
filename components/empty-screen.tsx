@@ -25,7 +25,7 @@ export function EmptyScreen({ setInput }: Pick<UseChatHelpers, 'setInput'>) {
           .
         </p>
         <p className="leading-normal text-muted-foreground">
-          You can ask me things like:<br></br> "What's the price of a certain stock?"<br></br> "What are five great stocks?"<br></br>"Buy 300 stocks"
+        `You can ask me things like:<br></br> &ldquo;What&rsquo;s the price of a certain stock?&rdquo;<br></br> &ldquo;What are five great stocks?&rdquo;<br></br>&ldquo;Buy 300 stocks&rdquo;`
         </p>
       </div>
     </div>
