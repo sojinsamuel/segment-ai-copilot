@@ -15,7 +15,7 @@ import { toast } from 'sonner'
 import { Analytics } from '@segment/analytics-node'
 
 const analytics = new Analytics({
-  writeKey: process.env.SEGMENT_WRITE_KEY as string
+  writeKey: process.env.NEXT_PUBLIC_SEGMENT_WRITE_KEY as string
 })
 
 export interface ChatProps extends React.ComponentProps<'div'> {

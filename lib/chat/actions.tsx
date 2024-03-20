@@ -37,7 +37,7 @@ import { Chat } from '@/lib/types'
 import { auth } from '@/auth'
 import { Analytics } from '@segment/analytics-node'
 
-const analytics = new Analytics({ writeKey: process.env.SEGMENT_WRITE_KEY as string})
+const analytics = new Analytics({ writeKey: process.env.NEXT_PUBLIC_SEGMENT_WRITE_KEY as string})
 
 
 const openai = new OpenAI({

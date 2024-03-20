@@ -54,7 +54,7 @@ Remember to update your environment variables (`POSTGRES_URL`, `POSTGRES_PRISMA_
 
 Use your existing Twilio Segment account or [create a free one here](https://segment.com/signup/). Create a new `node.js` source by following the instructions [here](https://segment.com/docs/connections/sources/) and record your write key.
 
-Remember to update the segment write key in your environment `.env` file (`SEGMENT_WRITE_KEY`) with the write key to your node.js Segment source. For dev on localhost keep in mind that Next.js requires you to prefix environment variables with `NEXT_PUBLIC_`, read more [here](https://nextjs.org/docs/pages/building-your-application/configuring/environment-variables#bundling-environment-variables-for-the-browser)
+Remember to update the segment write key in your environment `.env` file (`NEXT_PUBLIC_SEGMENT_WRITE_KEY`) with the write key to your node.js Segment source. 
 
 
 ## Running locally
