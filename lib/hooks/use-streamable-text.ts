@@ -1,7 +1,7 @@
 import { StreamableValue, readStreamableValue } from 'ai/rsc'
 import { useEffect, useState } from 'react'
 import { Analytics } from '@segment/analytics-node'
-const analytics = new Analytics({ writeKey: process.env.NEXT_PUBLIC_SEGMENT_WRITE_KEY })
+const analytics = new Analytics({ writeKey: process.env.SEGMENT_WRITE_KEY })
 
 
 export const useStreamableText = (
