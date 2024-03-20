@@ -49,9 +49,6 @@ export async function signup(
         password,
         redirect: false
       })
-
-      // you can collect your userId and send identify + account creation calls to Segment here
-
       return { type: 'success', message: 'Account created!' }
     } catch (error) {
       const { message } = error as Error

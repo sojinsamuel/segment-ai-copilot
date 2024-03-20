@@ -53,7 +53,6 @@ export function Chat({ id, className, session, missingKeys }: ChatProps) {
 
   useEffect(() => {
     setNewChatId(id)
-    console.log('here')
     if (messages.length === 0) {
       analytics.track({
         userId: '123',

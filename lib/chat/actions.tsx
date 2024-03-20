@@ -190,13 +190,14 @@ Besides that, you can also chat with users and do some calculations if needed.`
         textNode = <BotMessage content={textStream.value} />
       }
 
+      // picking up copilot response and sending into segment
       if (done) {
         analytics.track({
           userId: '123',
-          event: 'Message Received - Server',
+          event: 'Message Received',
           properties: {
             content,
-            conversationId: aiState.get().chatId
+            conversationId: aiState.get().chatId,
           }
         })
 
@@ -236,6 +237,17 @@ Besides that, you can also chat with users and do some calculations if needed.`
               <StocksSkeleton />
             </BotCard>
           )
+
+        // send custom stock list component load to Segment
+        analytics.track({
+          userId: "123",
+          event: "Custom Component Loaded",
+          properties: {
+            type: 'Stock List',
+            stock_list: JSON.stringify(stocks.map(({ symbol, price, delta }) => ({ symbol, price, change: delta }))),
+            conversationId: aiState.get().chatId
+          }
+        });
 
           await sleep(1000)
 
@@ -283,7 +295,8 @@ Besides that, you can also chat with users and do some calculations if needed.`
           event: "Custom Component Loaded",
           properties: {
             type: 'Stock Price Chart',
-            stock_symbol: symbol
+            stock_symbol: symbol,
+            conversationId: aiState.get().chatId
           }
         });
           await sleep(1000)
@@ -332,7 +345,8 @@ Besides that, you can also chat with users and do some calculations if needed.`
           event: "Custom Component Loaded",
           properties: {
             type: 'Stock Purchase Interface',
-            stock_symbol: symbol
+            stock_symbol: symbol,
+            conversationId: aiState.get().chatId
           }
         });
 

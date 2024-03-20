@@ -12,7 +12,6 @@ export const useStreamableText = (
   );
   const [streamingComplete, setStreamingComplete] = useState(false);
   
-  // wait for response stream to finish then send to Segment
   useEffect(() => {
     let value = '';
     if (typeof content === 'object') {
@@ -27,20 +26,6 @@ export const useStreamableText = (
       })();
     }
   }, [content]);
-
-  useEffect(() => {
-    if (streamingComplete && typeof content === 'object') {
-      analytics.track({
-        userId: "123",
-        event: "Message Received",
-        properties: {
-          content: rawContent,
-          // fetching conv id from local and passing
-          conversationId : window.localStorage.getItem('newChatId')
-        }
-      });
-    }
-  }, [streamingComplete, rawContent, content]);
 
   return rawContent;
 }

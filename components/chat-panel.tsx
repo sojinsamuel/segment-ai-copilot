@@ -26,16 +26,16 @@ export function ChatPanel({ id, title, input, setInput }: ChatPanelProps) {
   const [shareDialogOpen, setShareDialogOpen] = React.useState(false)
 
   const exampleMessages = [
-    {
-      heading: 'Explain the concept',
-      subheading: 'of portfolio diversification',
-      message: `Explain the concept of a portfolio diversification`
-    },
-    {
-      heading: 'What are the benefits',
-      subheading: 'of buying bonds and stocks',
-      message: 'What are the benefits of buying bonds and stocks?'
-    },
+    // {
+    //   heading: 'Explain the concept',
+    //   subheading: 'of portfolio diversification',
+    //   message: `Explain the concept of a portfolio diversification`
+    // },
+    // {
+    //   heading: 'What are the benefits',
+    //   subheading: 'of buying bonds and stocks',
+    //   message: 'What are the benefits of buying bonds and stocks?'
+    // },
   ]
 
   return (

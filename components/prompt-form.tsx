@@ -53,7 +53,7 @@ export function PromptForm({
         setInput('')
         if (!value) return
         
-        // value is the user input, so sending to a.js
+        // sending user prompt to Segment
         analytics.track({
           userId: "123",
           event: "Message Sent",
