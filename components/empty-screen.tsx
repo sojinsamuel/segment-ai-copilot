@@ -27,8 +27,8 @@ export function EmptyScreen({ setInput }: Pick<UseChatHelpers, 'setInput'>) {
           Welcome to the Twilio Segment Finance Copilot
         </h1>
         <p className="leading-normal text-muted-foreground">
-          This is an open source AI chatbot app template built with{' '}
-          <ExternalLink href="https://segment.com/customer-data-platform/">Twilio Segment</ExternalLink>, the{' '}
+          This is an open source AI chatbot app template with baked in model observability built with:{' '}<br></br>
+          <ExternalLink href="https://segment.com/customer-data-platform/">Twilio Segment</ExternalLink>, {' '}
           <ExternalLink href="https://nextjs.org">Next.js</ExternalLink>, the{' '}
           <ExternalLink href="https://sdk.vercel.ai">
             Vercel AI SDK
@@ -38,6 +38,9 @@ export function EmptyScreen({ setInput }: Pick<UseChatHelpers, 'setInput'>) {
             Vercel KV
           </ExternalLink>
           .
+        </p>
+        <p className="leading-normal text-muted-foreground">
+          You can ask me things like:<br></br> "What's the price of a certain stock?"<br></br> "What are five great stocks?"<br></br>"Buy 300 stocks"
         </p>
       </div>
     </div>
