@@ -1,0 +1,61 @@
+# You must first activate a Billing Account here: https://platform.openai.com/account/billing/overview
+# Then get your OpenAI API Key here: https://platform.openai.com/account/api-keys
+OPENAI_API_KEY=""
+
+NEXT_PUBLIC_SEGMENT_WRITE_KEY=""
+
+# Generate a random secret: https://generate-secret.vercel.app/32 or `openssl rand -base64 32`
+AUTH_SECRET=""
+
+# Instructions to create kv database here: https://vercel.com/docs/storage/vercel-kv/quickstart and 
+KV_URL=""
+KV_REST_API_URL=""
+KV_REST_API_TOKEN=""
+KV_REST_API_READ_ONLY_TOKEN=""
+
+# Instructions to create postgres database here: https://vercel.com/docs/storage/vercel-postgres/quickstart and 
+POSTGRES_DATABASE=""
+POSTGRES_HOST=""
+POSTGRES_PASSWORD=""
+POSTGRES_PRISMA_URL=""
+POSTGRES_URL=""
+POSTGRES_URL_NON_POOLING=""
+POSTGRES_URL_NO_SSL=""
+POSTGRES_USER=""
+
+NX_DAEMON=""
+
+TURBO_REMOTE_ONLY=""
+TURBO_RUN_SUMMARY=""
+VERCEL="1"
+VERCEL_ENV="development"
+VERCEL_GIT_COMMIT_AUTHOR_LOGIN=""
+VERCEL_GIT_COMMIT_AUTHOR_NAME=""
+VERCEL_GIT_COMMIT_MESSAGE=""
+VERCEL_GIT_COMMIT_REF=""
+VERCEL_GIT_COMMIT_SHA=""
+VERCEL_GIT_PREVIOUS_SHA=""
+VERCEL_GIT_PROVIDER=""
+VERCEL_GIT_PULL_REQUEST_ID=""
+VERCEL_GIT_REPO_ID=""
+VERCEL_GIT_REPO_OWNER=""
+VERCEL_GIT_REPO_SLUG=""
+VERCEL_URL=""
+
+
+TURBO_REMOTE_ONLY=""
+TURBO_RUN_SUMMARY=""
+VERCEL="1"
+VERCEL_ENV="development"
+VERCEL_GIT_COMMIT_AUTHOR_LOGIN=""
+VERCEL_GIT_COMMIT_AUTHOR_NAME=""
+VERCEL_GIT_COMMIT_MESSAGE=""
+VERCEL_GIT_COMMIT_REF=""
+VERCEL_GIT_COMMIT_SHA=""
+VERCEL_GIT_PREVIOUS_SHA=""
+VERCEL_GIT_PROVIDER=""
+VERCEL_GIT_PULL_REQUEST_ID=""
+VERCEL_GIT_REPO_ID=""
+VERCEL_GIT_REPO_OWNER=""
+VERCEL_GIT_REPO_SLUG=""
+VERCEL_URL=""
