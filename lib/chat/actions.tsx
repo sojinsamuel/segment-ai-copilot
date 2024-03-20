@@ -191,6 +191,15 @@ Besides that, you can also chat with users and do some calculations if needed.`
       }
 
       if (done) {
+        analytics.track({
+          userId: '123',
+          event: 'Message Received - Server',
+          properties: {
+            content,
+            conversationId: aiState.get().chatId
+          }
+        })
+
         textStream.done()
         aiState.done({
           ...aiState.get(),

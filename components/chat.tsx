@@ -14,7 +14,9 @@ import { Message } from '@/lib/chat/actions'
 import { toast } from 'sonner'
 import { Analytics } from '@segment/analytics-node'
 
-const analytics = new Analytics({ writeKey: process.env.NEXT_PUBLIC_SEGMENT_WRITE_KEY })
+const analytics = new Analytics({
+  writeKey: process.env.NEXT_PUBLIC_SEGMENT_WRITE_KEY
+})
 
 export interface ChatProps extends React.ComponentProps<'div'> {
   initialMessages?: Message[]
@@ -35,34 +37,39 @@ export function Chat({ id, className, session, missingKeys }: ChatProps) {
   const [_, setNewChatId] = useLocalStorage('newChatId', id)
 
   useEffect(() => {
-    if (session?.user && !path.includes('chat') && messages.length === 1) {
-      window.history.replaceState({}, '', `/chat/${id}`);
+    if (session?.user) {
+      if (!path.includes('chat') && messages.length === 1) {
+        window.history.replaceState({}, '', `/chat/${id}`)
+      }
     }
+  }, [id, path, session?.user, messages])
 
-    const messagesLength = aiState.messages?.length;
-    if (messagesLength === 2) {
-      router.refresh();
-    }
-
-    setNewChatId(id);
-
-    missingKeys.forEach(key => {
-      toast.error(`Missing ${key} environment variable!`);
-    });
-  }, [id, path, session?.user, aiState.messages, router, setNewChatId, missingKeys]);
-
-  // send conversation start to segment if msg queue is empty
   useEffect(() => {
+    const messagesLength = aiState.messages?.length
+    if (messagesLength === 2) {
+      router.refresh()
+    }
+  }, [aiState.messages, router])
+
+  useEffect(() => {
+    setNewChatId(id)
+    console.log('here')
     if (messages.length === 0) {
       analytics.track({
-        userId: "123",
-        event: "Conversation Started",
+        userId: '123',
+        event: 'Conversation Started',
         properties: {
           conversationId: id
         }
-      });
+      })
     }
-  }, []);
+  }, [])
+
+  useEffect(() => {
+    missingKeys.map(key => {
+      toast.error(`Missing ${key} environment variable!`)
+    })
+  }, [missingKeys])
 
   return (
     <>
