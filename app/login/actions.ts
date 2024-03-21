@@ -32,9 +32,6 @@ export async function authenticate(
         redirectTo: '/'
       })
       
-      // you can collect your userId and send identify + login calls to Segment here
-
-      
     } else {
       return { type: 'error', message: 'Invalid credentials!' }
     }
