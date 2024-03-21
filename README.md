@@ -1,7 +1,6 @@
-<a href="https://chat.vercel.ai/">
+
   <img alt="Next.js 14 and App Router-ready AI chatbot with Segment analytics" src="https://raw.githubusercontent.com/vaithschmitz/segment-ai-copilot/main/public/repo_img.png">
   <h1 align="center">Next.js AI Chatbot with Twilio Segment analytics instrumentation</h1>
-</a>
 
 <p align="center">
   An open-source AI chatbot app with baked in observability template built with Next.js, the Vercel AI SDK, OpenAI, Vercel KV and Twilio Segment analytics.
