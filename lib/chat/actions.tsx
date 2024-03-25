@@ -35,10 +35,11 @@ import { saveChat } from '@/app/actions'
 import { SpinnerMessage, UserMessage } from '@/components/stocks/message'
 import { Chat } from '@/lib/types'
 import { auth } from '@/auth'
-import { Analytics } from '@segment/analytics-node'
+// import { Analytics } from '@segment/analytics-node'
 
-const analytics = new Analytics({ writeKey: process.env.NEXT_PUBLIC_SEGMENT_WRITE_KEY as string})
+// const analytics = new Analytics({ writeKey: process.env.NEXT_PUBLIC_SEGMENT_WRITE_KEY as string})
 
+import analytics from '@/app/analyticsInstance'
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY || ''
@@ -241,7 +242,7 @@ Besides that, you can also chat with users and do some calculations if needed.`
         // send custom stock list component load to Segment
         analytics.track({
           userId: "123",
-          event: "Custom Component Loaded",
+          event: "Component Loaded",
           properties: {
             type: 'Stock List',
             stock_list: JSON.stringify(stocks.map(({ symbol, price, delta }) => ({ symbol, price, change: delta }))),
@@ -289,10 +290,10 @@ Besides that, you can also chat with users and do some calculations if needed.`
               <StockSkeleton />
             </BotCard>
           )
-        // send custom component load to Segment
+        // send component load to Segment
         analytics.track({
           userId: "123",
-          event: "Custom Component Loaded",
+          event: "Component Loaded",
           properties: {
             type: 'Stock Price Chart',
             stock_symbol: symbol,
@@ -339,10 +340,10 @@ Besides that, you can also chat with users and do some calculations if needed.`
         }),
         render: async function* ({ symbol, price, numberOfShares = 100 }) {
 
-        // send custom component load to Segment
+        // send component load to Segment
         analytics.track({
           userId: "123",
-          event: "Custom Component Loaded",
+          event: "Component Loaded",
           properties: {
             type: 'Stock Purchase Interface',
             stock_symbol: symbol,

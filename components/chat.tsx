@@ -12,11 +12,14 @@ import { Session } from '@/lib/types'
 import { usePathname, useRouter } from 'next/navigation'
 import { Message } from '@/lib/chat/actions'
 import { toast } from 'sonner'
-import { Analytics } from '@segment/analytics-node'
+// import { Analytics } from '@segment/analytics-node'
 
-const analytics = new Analytics({
-  writeKey: process.env.NEXT_PUBLIC_SEGMENT_WRITE_KEY as string
-})
+import analytics from '@/app/analyticsInstance'
+
+
+// const analytics = new Analytics({
+//   writeKey: process.env.NEXT_PUBLIC_SEGMENT_WRITE_KEY as string
+// })
 
 export interface ChatProps extends React.ComponentProps<'div'> {
   initialMessages?: Message[]
