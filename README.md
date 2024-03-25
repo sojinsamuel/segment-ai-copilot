@@ -3,7 +3,7 @@
   <h1 align="center">Next.js AI Chatbot with Twilio Segment analytics instrumentation</h1>
 
 <p align="center">
-  An open-source AI chatbot app with baked in observability template built with Next.js, the Vercel AI SDK, OpenAI, Vercel KV and Twilio Segment analytics.
+An open-source AI copilot with built-in Segment analytics built with Next.js, the Vercel AI SDK, OpenAI, Vercel KV and Twilio Segment.
 </p>
 
 <p align="center">
@@ -50,6 +50,8 @@ Similarly, follow the steps outline in the [quick start guide](https://vercel.co
 Remember to update your environment variables (`POSTGRES_URL`, `POSTGRES_PRISMA_URL`, `POSTGRES_URL_NO_SSL`, `POSTGRES_URL_NON_POOLING`, `POSTGRES_USER`, `POSTGRES_HOST`, `POSTGRES_PASSWORD`, `POSTGRES_DATABASE`) in the `.env` file with the appropriate credentials provided during the Postgres database setup.
 
 ## Enabling Twilio Segment model tracking
+
+For the full guided walkthrough, follow the blog post [here.](https://segment.com/blog/instrumenting-user-insights-for-your-ai-copilot)
 
 Use your existing Twilio Segment account or [create a free one here](https://segment.com/signup/). Create a new `node.js` source by following the instructions [here](https://segment.com/docs/connections/sources/) and record your write key.
 
