@@ -35,7 +35,7 @@ This template ships with OpenAI `gpt-3.5-turbo` as the default. However, thanks 
 
 You can deploy your own version of the Next.js AI Chatbot with Twilio Segment observability to Vercel with one click:
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvaithschmitz%2Fsegment-ai-copilot)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvaithschmitz%2Fsegment-ai-copilot%2Ftree%2Fmain&env=NEXT_PUBLIC_SEGMENT_WRITE_KEY,OPENAI_API_KEY,KV_REST_API_TOKEN,POSTGRES_PASSWORD&envDescription=API%20Keys%20Needed%20For%20Deploy&envLink=https%3A%2F%2Fgithub.com%2Fvaithschmitz%2Fsegment-ai-copilot%2Fblob%2Fmain%2Fexample-env-vars)
 
 ## Creating a KV Database Instance
 

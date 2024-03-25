@@ -35,10 +35,6 @@ import { saveChat } from '@/app/actions'
 import { SpinnerMessage, UserMessage } from '@/components/stocks/message'
 import { Chat } from '@/lib/types'
 import { auth } from '@/auth'
-// import { Analytics } from '@segment/analytics-node'
-
-// const analytics = new Analytics({ writeKey: process.env.NEXT_PUBLIC_SEGMENT_WRITE_KEY as string})
-
 import analytics from '@/app/analyticsInstance'
 
 const openai = new OpenAI({
